@@ -4,7 +4,7 @@ const prefix = "#";
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`PLAYERUNKNOWN'S BATTLEGROUNDS`,"http://twitch.tv/Shoukomoe")
+client.user.setGame(`VSCode`,"http://twitch.tv/Shoukomoe")
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
@@ -65,10 +65,13 @@ message.react("❌")
 
 /////////////////////
 client.on("message", message => {
+  
+  
     var prefix = "+";
  
             var args = message.content.substring(prefix.length).split(" ");
             if (message.content.startsWith(prefix + "clear")) {
+              message.react('613540062314889228');
    if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('⚠ | **ليس لديك صلاحيات**');
         var msg;
         msg = parseInt();
@@ -93,24 +96,28 @@ client.on("message", message => {
 // auto reply
 client.on('message', msg => {
     if (msg.content === 'احبك') {
+      message.react('🚨');
       msg.channel.send('**لاتحتك يا اخوي لو سمحت**');
     }
   });
   
   client.on('message', msg => {
     if (msg.content === '.') {
+      message.react('🌚');
       msg.channel.send('**احلى نقطه يعومري**');
     }
   });
   
   client.on('message', msg => {
     if (msg.content === 'ping') {
+      message.react('😄');
       msg.channel.send('**pong**');
     }
   });
   
     client.on('message', msg => {
     if (msg.content === 'السلام عليكم') {
+      message.react('🐱‍👤');
       msg.channel.send('**و عليكم السلام :slight_smile:**');
     }
   });
@@ -209,13 +216,14 @@ client.on('message', function(msg) {
 
   client.on('message', message => {
 if(message.content == '<@613736154189135887>') {
+  message.react('🥰');
 message.channel.startTyping()
 setTimeout(() => { 
 message.channel.stopTyping()
 }, 7000);
 }
 });
-
+/////////////////////////////////////////////////
 
 
 
@@ -292,6 +300,7 @@ client.on('message', message => {
  ////////////////////////////////////////////////////////////
 client.on('message', message => {
     if (message.content.startsWith("stats")) {
+      message.react('612743117120208965');
     message.channel.send({
         embed: new Discord.RichEmbed()
             .addField('Uptime', timeCon(process.uptime()), true)
