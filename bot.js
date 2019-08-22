@@ -335,13 +335,17 @@ message.channel.stopTyping()
 
 
 
- client.on('message' , ReBeL => {
-ar prefix = "jp";
-if(ReBeL.author.bot) return;
-if(ReBeL.channel.type == 'dm') return;
-if(ReBeL.content.startsWith(prefix + "احذف الالوان")) {
-ReBeL.guild.roles.filter(rebel => isNaN(rebel)).forEach(codes => codes.delete())
-}
+client.on('message', message => {
+  if (message.content === '!join') {
+    // Note that this will only work if the message was sent in a guild
+    // and the author is actually in a voice channel.
+    // You might want to check for all that stuff first
+    const channel = message.member.voiceChannel;
+
+    channel.join()
+    .then(connection => console.log('Connected!'))
+    .catch(console.error);
+  }
 });
  
 
@@ -524,17 +528,7 @@ client.on('message', async(message) => {
       
       ///////////////////////////////////////////////////////////////
       
-      client.on("ready", () => {
-  const channel = client.channels.get("614130957146128413");
-  if (!channel) return console.error("The channel does not exist!");
-  channel.join().then(connection => {
-    // Yay, it worked!
-    console.log("Successfully connected.");
-  }).catch(e => {
-    // Oh no, it errored! Let's log it to console :)
-    console.error(e);
-  });
-});
+
       
 //////////////////////////////////////////////////////////////////////////////////////////
 
