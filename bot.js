@@ -83,9 +83,7 @@ client.on("message", message => {
         description: "تم مسح الرسائل بنجاح",
         footer: {
           text: "Heroku"
-        } else {
-message.react("613540062314889228")
- }
+        } 
       }}).then(msg => {msg.delete(3000)});
                           }
 
@@ -99,36 +97,28 @@ message.react("613540062314889228")
 client.on('message', msg => {
     if (msg.content === 'احبك') {
       msg.channel.send('**لاتحتك يا اخوي لو سمحت**');
-    } else {
-message.react("🚨")
- }
+    } 
   });
   
   client.on('message', msg => {
     if (msg.content === '.') {
 
       msg.channel.send('**احلى نقطه يعومري**');
-    }  else {
-message.react("🌚")
- }
+    }  
   });
   
   client.on('message', msg => {
     if (msg.content === 'ping') {
 
       msg.channel.send('**pong**');
-    } else {
-message.react("😄")
- }
+    } 
   });
   
     client.on('message', msg => {
     if (msg.content === 'السلام عليكم') {
 
       msg.channel.send('**و عليكم السلام :slight_smile:**');
-    } else {
-message.react("🐱‍👤")
- }
+    } 
   });
   
       client.on('message', msg => {
@@ -230,9 +220,7 @@ message.channel.startTyping()
 setTimeout(() => { 
 message.channel.stopTyping()
 }, 7000);
-} else {
-message.react("🥰")
- }
+} 
 });
 /////////////////////////////////////////////////
 
@@ -340,6 +328,12 @@ client.on('message', message => {
     .catch(console.error);
   }
 });
+
+if (message.content === 'hhhhhhh') {
+	message.react('😂');
+}
+
+
 //////////////////////////////////////////////////////////////////////////////////////////
 
 client.login(process.env.BOT_TOKEN);
