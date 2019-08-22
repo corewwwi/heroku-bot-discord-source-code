@@ -4,7 +4,7 @@ const prefix = "#";
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`تجهيز😄`,"http://twitch.tv/Shoukomoe")
+client.user.setGame(`تجهيز 😄`,"http://twitch.tv/Shoukomoe")
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
@@ -47,17 +47,7 @@ var mentionned = message.mentions.members.first();
  } else {
      h = message.member
  }
-        moment.locale('ar-TN');
-var id = new  Discord.RichEmbed()
-.setColor("RANDOM")
-.addField(': انضمامك لسيرفر قبل', `${moment(h.joinedAt).format('YYYY/M/D HH:mm:ss')} \n \`${moment(h.joinedAt).fromNow()}\``, true)
-.addField(': دخولك لديسكورد قبل', `${moment(heg.createdTimestamp).format('YYYY/M/D HH:mm:ss')} **\n** \`${moment(heg.createdTimestamp).fromNow()}\`` ,true)
-.addField(": النك نيم",`${h.nickname}`, true) .addField(": #",heg.discriminator, true)
-.addField(`: البلينق`,`${h.presence.game && h.presence.game.name || '-'}`,true) .addField(': الحالة',`${h.presence.status}`,true)
-.addField(`: الرتب`, `${message.guild.members.get(h.id).roles.map(r => `\`${r.name}\``).slice(1).join('\n') || 'لايوجد رتب'}`,true)                                                    
-.setThumbnail(heg.avatarURL);
-message.channel.send(id)
-}       });
+
   
 
 /////////////////////
@@ -345,14 +335,14 @@ message.channel.stopTyping()
 
 
 
-//  client.on('message' , ReBeL => {
-//var prefix = "jp";
-//if(ReBeL.author.bot) return;
-//if(ReBeL.channel.type == 'dm') return;
-//if(ReBeL.content.startsWith(prefix + "احذف الالوان")) {
-//ReBeL.guild.roles.filter(rebel => isNaN(rebel)).forEach(codes => codes.delete())
-//}
-//});
+ client.on('message' , ReBeL => {
+ar prefix = "jp";
+if(ReBeL.author.bot) return;
+if(ReBeL.channel.type == 'dm') return;
+if(ReBeL.content.startsWith(prefix + "احذف الالوان")) {
+ReBeL.guild.roles.filter(rebel => isNaN(rebel)).forEach(codes => codes.delete())
+}
+});
  
 
 
@@ -518,6 +508,34 @@ ${users.join('\n')}
 }
 });
 
+client.on('message', async(message) => {
+    if(message.author.julian || message.channel.type == 'dm') return;
+    let args = message.content.split(' ');
+    if(args[0] == `${prefix}bc`){
+        if(!message.member.hasPermission('MANAGE_GUILD')) return;
+        if(!args[1]) return message.channel.send(`**Usage:** ${prefix}bc [message]`);
+        message.guild.members.map((m) => {
+            setTimeout(() => {
+                m.send(args.slice(1).join(' ').replace('[user]', m).replace('[server]', message.guild.name)).catch(e => undefined);
+            }, 550);
+        });
+    }
+}); // مو مجرب ,_,      
+      
+      ///////////////////////////////////////////////////////////////
+      
+      client.on("ready", () => {
+  const channel = client.channels.get("614130957146128413");
+  if (!channel) return console.error("The channel does not exist!");
+  channel.join().then(connection => {
+    // Yay, it worked!
+    console.log("Successfully connected.");
+  }).catch(e => {
+    // Oh no, it errored! Let's log it to console :)
+    console.error(e);
+  });
+});
+      
 //////////////////////////////////////////////////////////////////////////////////////////
 
 client.login(process.env.BOT_TOKEN);
