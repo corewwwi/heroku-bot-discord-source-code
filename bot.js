@@ -29,7 +29,38 @@ client.user.setGame(`PLAYERUNKNOWN'S BATTLEGROUNDS`,"http://twitch.tv/Shoukomoe"
 });
 /////////////////////
 
-
+client.on('message', message => {
+if(!message.channel.guild) return;
+if(message.content.startsWith(prefix + 'اسحب')) {
+ if (message.member.hasPermission("MOVE_MEMBERS")) {
+ if (message.mentions.users.size === 0) {
+ return message.channel.send("``للأستخدام اكتب  : " +prefix+ "move [USER]``")
+}
+if (message.member.voiceChannel != null) {
+ if (message.mentions.members.first().voiceChannel != null) {
+ var authorchannel = message.member.voiceChannelID;
+ var usermentioned = message.mentions.members.first().id;
+var embed = new Discord.RichEmbed()
+ .setTitle("Succes!")
+ .setColor("#000000")
+ .setDescription(`لقد قمت بسحب <@${usermentioned}> الى الروم الصوتي الخاص بك✅ `)
+var embed = new Discord.RichEmbed()
+.setTitle(`You are Moved in ${message.guild.name}`)
+ .setColor("RANDOM")
+.setDescription(`**<@${message.author.id}> Moved You To His Channel!\nServer --> ${message.guild.name}**`)
+ message.guild.members.get(usermentioned).setVoiceChannel(authorchannel).then(m => message.channel.send(embed))
+message.guild.members.get(usermentioned).send(embed)
+} else {
+message.channel.send("``لا تستطيع سحب "+ message.mentions.members.first() +" `يجب ان يكون هذه العضو في روم صوتي`")
+}
+} else {
+ message.channel.send(":x:  العضو يجب أن يكون متواجد بروم صوتي ")
+}
+} else {
+message.react("❌")
+ }
+}
+});
   
 
 /////////////////////
@@ -190,6 +221,33 @@ message.channel.stopTyping()
 
 
 ///////////////////////////////////////////////////////////////
+client.on('message', message => {
+var prefix = "%";
+
+    if (message.author.id === client.user.id) return;
+    if (message.guild) {
+   let embed = new Discord.RichEmbed()
+    let args = message.content.split(' ').slice(1).join(' ');
+if(message.content.split(' ')[0] == prefix + 'bc') {
+    if (!args[1]) {
+message.channel.send("**%bc <message>**");
+return;
+}
+        message.guild.members.forEach(m => {
+   if(!message.member.hasPermission('ADMINISTRATOR')) return;
+            var bc = new Discord.RichEmbed()
+            .addField('» السيرفر :', `${message.guild.name}`)
+            .addField('» المرسل : ', `${message.author.username}#${message.author.discriminator}`)
+            .addField(' » الرسالة : ', args)
+            .setColor('#ff0000')
+            // m.send(`[${m}]`);
+            m.send(`${m}`,{embed: bc});
+        });
+    }
+    } else {
+        return;
+    }
+});
 
 
 //////////////////////////////////////////////////////
@@ -232,7 +290,16 @@ client.on('message', message => {
 
   
  ////////////////////////////////////////////////////////////
-
+client.on('message', message => {
+    if (message.content.startsWith("stats")) {
+    message.channel.send({
+        embed: new Discord.RichEmbed()
+            .addField('Uptime', timeCon(process.uptime()), true)
+            .addField('RAM Usage', `${(process.memoryUsage().rss / 1048576).toFixed()}MB`, true)
+            .addField('Guild Count', client.guilds.size, true)
+    })
+}
+});
 
 
 ///////////////////////////////////////////////////////////////////////
