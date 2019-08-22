@@ -29,24 +29,6 @@ client.user.setGame(`تجهيز 😄`,"http://twitch.tv/Shoukomoe")
 });
 /////////////////////
 
-  client.on('message', message => {
-    if (message.content.startsWith(prefix + "هويتي")) {
-var args = message.content.split(" ").slice(1);
-let user = message.mentions.users.first();
-var men = message.mentions.users.first();
- var heg;
- if(men) {
-     heg = men
- } else {
-     heg = message.author
- }
-var mentionned = message.mentions.members.first();
-  var h;
- if(mentionned) {
-     h = mentionned
- } else {
-     h = message.member
- }
 
   
 
@@ -66,7 +48,7 @@ client.on("message", message => {
         color: 0x06DF00,
         description: "تم مسح الرسائل بنجاح",
         footer: {
-          text: "YourNameBot"
+          text: "Heroku"
         }
       }}).then(msg => {msg.delete(3000)});
                           }
@@ -108,7 +90,7 @@ message.channel.send(alpha);
 
 
 client.on('message', message => {
-     if (message.content === "#help") {
+     if (message.content === "#Tohelp") {
 message.author.send("**اوامر البوت**" + `  **
 :small_orange_diamond:   كود ميوت وديفن والغائهم
 #deafen
@@ -116,7 +98,7 @@ message.author.send("**اوامر البوت**" + `  **
 #undeafen
 #vunmute
 :small_orange_diamond:   لمسح الشات
-#clear
++clear
 :small_orange_diamond:   لرؤية الأفتار
 +avatar
 :small_orange_diamond:   معلومات السيرفر
@@ -335,18 +317,14 @@ message.channel.stopTyping()
 
 
 
-client.on('message', message => {
-  if (message.content === '!join') {
-    // Note that this will only work if the message was sent in a guild
-    // and the author is actually in a voice channel.
-    // You might want to check for all that stuff first
-    const channel = message.member.voiceChannel;
-
-    channel.join()
-    .then(connection => console.log('Connected!'))
-    .catch(console.error);
-  }
-});
+//  client.on('message' , ReBeL => {
+//var prefix = "jp";
+//if(ReBeL.author.bot) return;
+//if(ReBeL.channel.type == 'dm') return;
+//if(ReBeL.content.startsWith(prefix + "احذف الالوان")) {
+//ReBeL.guild.roles.filter(rebel => isNaN(rebel)).forEach(codes => codes.delete())
+//}
+//});
  
 
 
@@ -511,25 +489,19 @@ ${users.join('\n')}
 `);
 }
 });
+///////////////////////////////////////////////
+client.on('message', message => {
+  if (message.content === '!join') {
+    // Note that this will only work if the message was sent in a guild
+    // and the author is actually in a voice channel.
+    // You might want to check for all that stuff first
+    const channel = message.member.voiceChannel;
 
-client.on('message', async(message) => {
-    if(message.author.julian || message.channel.type == 'dm') return;
-    let args = message.content.split(' ');
-    if(args[0] == `${prefix}bc`){
-        if(!message.member.hasPermission('MANAGE_GUILD')) return;
-        if(!args[1]) return message.channel.send(`**Usage:** ${prefix}bc [message]`);
-        message.guild.members.map((m) => {
-            setTimeout(() => {
-                m.send(args.slice(1).join(' ').replace('[user]', m).replace('[server]', message.guild.name)).catch(e => undefined);
-            }, 550);
-        });
-    }
-}); // مو مجرب ,_,      
-      
-      ///////////////////////////////////////////////////////////////
-      
-
-      
+    channel.join()
+    .then(connection => console.log('Connected!'))
+    .catch(console.error);
+  }
+});
 //////////////////////////////////////////////////////////////////////////////////////////
 
 client.login(process.env.BOT_TOKEN);
