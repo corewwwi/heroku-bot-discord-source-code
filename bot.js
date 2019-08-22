@@ -71,7 +71,7 @@ client.on("message", message => {
  
             var args = message.content.substring(prefix.length).split(" ");
             if (message.content.startsWith(prefix + "clear")) {
-              message.react('613540062314889228');
+
    if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('⚠ | **ليس لديك صلاحيات**');
         var msg;
         msg = parseInt();
@@ -83,7 +83,9 @@ client.on("message", message => {
         description: "تم مسح الرسائل بنجاح",
         footer: {
           text: "Heroku"
-        }
+        } else {
+message.react("613540062314889228")
+ }
       }}).then(msg => {msg.delete(3000)});
                           }
 
@@ -96,30 +98,37 @@ client.on("message", message => {
 // auto reply
 client.on('message', msg => {
     if (msg.content === 'احبك') {
-      message.react('🚨');
       msg.channel.send('**لاتحتك يا اخوي لو سمحت**');
-    }
+    } else {
+message.react("🚨")
+ }
   });
   
   client.on('message', msg => {
     if (msg.content === '.') {
-      message.react('🌚');
+
       msg.channel.send('**احلى نقطه يعومري**');
-    }
+    }  else {
+message.react("🌚")
+ }
   });
   
   client.on('message', msg => {
     if (msg.content === 'ping') {
-      message.react('😄');
+
       msg.channel.send('**pong**');
-    }
+    } else {
+message.react("😄")
+ }
   });
   
     client.on('message', msg => {
     if (msg.content === 'السلام عليكم') {
-      message.react('🐱‍👤');
+
       msg.channel.send('**و عليكم السلام :slight_smile:**');
-    }
+    } else {
+message.react("🐱‍👤")
+ }
   });
   
       client.on('message', msg => {
@@ -216,12 +225,14 @@ client.on('message', function(msg) {
 
   client.on('message', message => {
 if(message.content == '<@613736154189135887>') {
-  message.react('🥰');
+
 message.channel.startTyping()
 setTimeout(() => { 
 message.channel.stopTyping()
 }, 7000);
-}
+} else {
+message.react("🥰")
+ }
 });
 /////////////////////////////////////////////////
 
