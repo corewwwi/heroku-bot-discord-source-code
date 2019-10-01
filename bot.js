@@ -4,7 +4,7 @@ const prefix = "#";
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.Activity('Black Clover 103 on HerkuAnime', { type: 'WATCHING' })
+client.user.setPresence({ game: { name: 'Black Clover 103 on HerokuAnime' , type: 'WATCHING' }, status: 'idle' })
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
