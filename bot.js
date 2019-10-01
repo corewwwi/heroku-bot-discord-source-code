@@ -4,7 +4,7 @@ const prefix = "#";
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setGame(`VSCode`,"http://twitch.tv/Shoukomoe")
+client.user.Activity('Black Clover 103 on HerkuAnime', { type: 'WATCHING' })
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
