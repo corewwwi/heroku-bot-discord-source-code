@@ -4,7 +4,7 @@ const prefix = "#";
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setPresence({ game: { name: 'Granblue Fantasy The Animation - 01' , type: 'WATCHING' }, status: 'dnd' })
+client.user.setPresence({ game: { name: 'HerokuAnime Windows is coming!' , type: 'WATCHING' }, status: 'idle' })
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
