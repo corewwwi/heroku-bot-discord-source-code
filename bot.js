@@ -148,8 +148,20 @@ message.channel.sendEmbed(embed);
  }
 });
 ///////////////////////////////////////////////////////////////
-
-
+client.on('ready',async () => {
+console.log("Starting..");
+let g = client.guilds.get("593816947083182091"); // id server
+let c = g.channels.get("626512220439969792");// id channel
+if(c.type === 'voice') {
+c.join();
+setInterval(() => {
+if(!g.me.voiceChannel) c.join();
+}, 1);
+} else {
+console.log('Failed To Join: \n The Channel Type isn "Listening."')
+}
+});
+///
 
 client.on('message', message => {
     if (message.content.startsWith("+avatar")) {
