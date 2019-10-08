@@ -4,7 +4,7 @@ const prefix = "#";
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-client.user.setPresence({ game: { name: 'my new version is coming' , type: 'WATCHING' }, status: 'dnd' })
+client.user.setPresence({ game: { name: 'my new version is coming' , type: 'WATCHING' }, status: 'idle' })
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
